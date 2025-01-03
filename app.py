@@ -27,7 +27,3 @@ def random_books():
     else:
         selected_books = data
     return render_template("random.html", books=selected_books)
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
