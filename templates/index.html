@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Selector</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #6200ea;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        main {
+            padding: 2rem;
+        }
+        form {
+            background: white;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 1rem auto;
+        }
+        form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        form input {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        form button {
+            background-color: #6200ea;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        form button:hover {
+            background-color: #3700b3;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            background: white;
+            margin: 1rem auto;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            text-align: center;
+        }
+        ul li img {
+            max-width: 100px;
+            height: auto;
+            margin: 1rem 0;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin: 2rem auto;
+            max-width: 200px;
+            background-color: #6200ea;
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a:hover {
+            background-color: #3700b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Book Selector</h1>
+    </header>
+    <main>
+        <form action="/add" method="post">
+            <label for="title">Book Title:</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="cover_url">Cover URL:</label>
+            <input type="url" id="cover_url" name="cover_url" required>
+
+            <button type="submit">Add Book</button>
+        </form>
+
+        <h2>Books in your library</h2>
+        <ul>
+            {% for book in books %}
+            <li>
+                <strong>{{ book.title }}</strong><br>
+                <img src="{{ book.cover_url }}" alt="{{ book.title }}">
+            </li>
+            {% endfor %}
+        </ul>
+
+        <a href="/random">Pick 5 Random Books</a>
+    </main>
+</body>
+</html>
